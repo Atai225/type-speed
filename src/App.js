@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import Main from './components/Main/Main';
 import style from './app.module.css'
 import Result from './components/Result/Result';
-import Modal from './Modal/Modal';
+import Modal from './components/Modal/Modal';
 
 function App() {
   const [words, setWords] = useState();
-  const [result, setResult] = useState()
+  const [result, setResult] = useState(null)
   const [show, setShow] = useState(false)
   const [start, setStart] = useState(false)
 
@@ -34,7 +34,7 @@ function App() {
           {words && start ?
             <Main words={words} onSubmit={getResult} /> : <button className={style.start__btn} onClick={( ) => setStart(true)}>Start</button>
           }
-        {show && <Modal show={show} close={() => clear()}>
+        {show && result && <Modal show={show} close={() => clear()}>
            <Result result={result}/>
         </Modal>}
       </div>
