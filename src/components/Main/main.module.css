@@ -1,0 +1,70 @@
+
+.words{
+	max-width: 800px;
+	border-radius: .5rem;
+	padding: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: white;
+}
+.words__item{
+	font-family: 'Anek Malayalam', sans-serif;
+	font-size: 1.85rem;
+	line-height: 1.2;
+	padding-right: .2rem;
+	padding-left: .2rem;
+}
+.words__item:first-child{
+	padding-left: 0;
+}
+.active{
+	color: rgb(0, 222, 52);
+}
+.completed{
+	color: gray;
+}
+.type{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.wrong{
+	color: red;
+}
+.type__input{
+	padding: .8rem;
+	border: 1px solid gray;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	font-size: 1.4rem;
+	width: 500px;
+	font-family: 'Anek Malayalam', sans-serif;
+	outline: none;
+}
+.result{
+	display: flex;
+	max-width: 200px;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 auto;
+	margin-top: 1rem;
+}
+.result__timer, .result__mistakes{
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 1.2rem 1.5rem;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border: 2px solid #ffd000;
+}
+.result__text{
+	font-size: 18px;
+	font-weight: 400;
+}

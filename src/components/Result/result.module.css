@@ -1,0 +1,24 @@
+.result{
+	margin-top: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.result__title{
+	font-size: 30px;
+	font-family: 'Work Sans', sans-serif;
+	letter-spacing: 1px;
+}
+.result__name{
+	font-size: 22px;
+	font-weight: 500;
+}
+.result__speed, .result__mistakes{
+	font-family: 'Rubik', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+}
+.result__text{
+	font-size: 18px;
+	font-weight: 400;
+}
