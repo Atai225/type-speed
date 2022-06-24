@@ -7,10 +7,10 @@ import Timer from 'react-compound-timer'
 function Main({ words, onSubmit }) {
 	const [typed, setTyped] = useState('');
 	const [typedSymb, setTypedSymb] = useState('');
-	const [wrongWords, setWrongWords] = useState([]);
 	const [symbErrors, setSymbErrors] = useState(0);
 	const [currWord, setCurrWord] = useState(0);
 	const [timeOut, setTimeOut] = useState(false);
+	const [wrongWord, setWrongWord] = useState(null);
 
 
 	const checkSymbols = (keyCode) => {
@@ -28,19 +28,20 @@ function Main({ words, onSubmit }) {
 	}
 
 	const checkWord = () => {
-		if (words[currWord] !== typedSymb) {
-			wrongWords.push(words[currWord])
-		}
 		setTyped(typed + ' ')
-		setTypedSymb('')
-		setCurrWord(currWord + 1)
+		if (words[currWord] !== typedSymb) {
+			setTyped(typed.slice(0, -typedSymb.length))
+			setTypedSymb(typedSymb.slice(0, -typedSymb.length))
+			setWrongWord(words[currWord])
+		}else{
+			setTypedSymb('')
+			setCurrWord(currWord + 1)
+		}
 	}
 
 	const handleKeyDown = (e) => {
 		if (e.keyCode === 32) {
-			if (typedSymb.length === words[currWord].length) {
 				checkWord();
-			}
 		} else if (e.keyCode === 8) {
 				deleteSymbol();
 				checkSymbols(e.keyCode)
@@ -89,11 +90,7 @@ function Main({ words, onSubmit }) {
 							<div className={style.words}>
 								{words.map((word, index) => {
 									if(index === currWord){
-										return <span key={index} className={style.active + ' ' + style.words__item}>{word.split('').map((symbol, i) => (
-											<span key={i}>{symbol}</span>
-										))}</span> 
-									}if(wrongWords.includes(word)){
-										return <span key={index} className={style.wrong + ' ' + style.words__item}>{word.split('').map((symbol, i) => (
+										return <span key={index} className={wrongWord !== word ? style.active + ' ' + style.words__item : style.wrong + " " + style.words__item}>{word.split('').map((symbol, i) => (
 											<span key={i}>{symbol}</span>
 										))}</span> 
 									}
